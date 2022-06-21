@@ -56,7 +56,7 @@ export default {
   },
   methods: {
     submitTask() {
-      if(this.task == '') return;
+      if(this.task === '') return;
       this.tasks.push({
         name: this.task,
         status: "no action"
@@ -64,7 +64,7 @@ export default {
       this.task = ''
     },
     addToList(){
-      if(this.task == '') return;
+      if(this.task === '') return;
       this.tasks.push({
         name: this.task,
         status: "no action"
