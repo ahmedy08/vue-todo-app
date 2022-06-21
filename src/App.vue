@@ -1,14 +1,13 @@
 <template>
-  <add-bar></add-bar>
+  <todo></todo>
 </template>
 
 <script>
-import AddBar from "./components/AddBar";
-import ListSection from "./components/ListSection";
+import Todo from "./components/Todo";
 export default {
   components:{
-    AddBar,
-    ListSection
+    Todo,
+
   },
 }
 </script>
