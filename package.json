@@ -11,8 +11,10 @@
   },
   "dependencies": {
     "bootstrap": "^5.2.0-beta1",
+    "sortablejs": "^1.15.0",
     "vue": "^2.5.11",
-    "vue-toastification": "^1.7.14"
+    "vue-toastification": "^1.7.14",
+    "vuedraggable": "^2.24.3"
   },
   "browserslist": [
     "> 1%",
