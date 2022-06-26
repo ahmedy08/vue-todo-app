@@ -24,7 +24,6 @@
           <div class="bottom-text col"> {{ task.name }}</div>
           <div class="bottom-text col" @click="changeStatus(index)" style="cursor:pointer;"> {{ task.status }}</div>
           <div class="bottom-text col">
-            <button type="submit" class="btn btn-success" @click="finishTask(index)">c</button>
             <button type="submit" class="btn btn-warning" @click="editTask(index)">e</button>
             <button type="submit" class="btn btn-danger" @click="deleteTask(index)">d</button>
           </div>
@@ -46,6 +45,7 @@ export default {
   data() {
     return {
       task: '',
+      editedTask: null,
       allStatus: ["no action", "in progress", "complete"],
       tasks: [
         {
@@ -62,10 +62,15 @@ export default {
   methods: {
     submitTask() {
       if (this.task === '' || this.task.length < 3) return this.$toast.error("You must enter 3 characters at least!");
-      this.tasks.push({
-        name: this.task,
-        status: "no action"
-      })
+      if(this.editedTask === null){
+        this.tasks.push({
+          name: this.task,
+          status: "no action"
+        })
+      }else{
+        this.tasks[this.editedTask].name = this.task
+        this.editedTask = null
+      }
       this.$toast.success("Added Successfully!")
       this.task = ''
     },
@@ -73,10 +78,8 @@ export default {
       this.tasks.splice(index, 1)
     },
     editTask(index) {
-
-    },
-    finishTask(index) {
-      this.tasks[index].status = "complete"
+      this.task = this.tasks[index].name
+      this.editedTask = index
     },
     changeStatus(index) {
       let newIndex = this.allStatus.indexOf(this.tasks[index].status)
